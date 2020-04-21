@@ -1,0 +1,95 @@
+plugins {
+id "net.ltgt.apt-eclipse" version "0.21"
+id "com.github.johnrengelman.shadow" version "5.2.0"
+id "com.diffplug.gradle.spotless" version "3.27.0"
+}
+apply plugin:"application"
+sourceCompatibility='1.8'
+targetCompatibility='1.8'
+version "0.1"
+group "io.hashimati"
+repositories {
+mavenCentral()
+	maven { url "https://jcenter.bintray.com" }
+}
+configurations {
+    // for dependencies that are needed for development only
+    developmentOnly 
+}
+dependencies {
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor "io.micronaut:micronaut-inject-java"
+	annotationProcessor "io.micronaut:micronaut-validation"
+	annotationProcessor "io.micronaut.configuration:micronaut-openapi"
+	annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+	compile 'com.google.googlejavaformat:google-java-format:1.7'
+	compile 'io.micronaut:micronaut-views'
+	compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.1.RELEASE'
+	implementation "io.micronaut.configuration:micronaut-mongo-reactive"
+	implementation "io.micronaut:micronaut-http-client"
+	implementation "io.micronaut:micronaut-http-server-netty"
+	implementation "io.micronaut:micronaut-inject"
+	implementation "io.micronaut:micronaut-runtime"
+	implementation "io.micronaut:micronaut-validation"
+	implementation "io.swagger.core.v3:swagger-annotations"
+	implementation "javax.annotation:javax.annotation-api"
+	implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+	runtime 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+	runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
+	testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+	testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+	testCompile "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.1"
+	testCompile "io.micronaut.test:micronaut-test-junit5"
+	testCompile "org.junit.jupiter:junit-jupiter-api"
+	testCompile group: 'io.projectreactor', name: 'reactor-test', version: '3.3.1.RELEASE'
+	testCompileOnly 'org.projectlombok:lombok:1.18.12'
+	testRuntime "org.junit.jupiter:junit-jupiter-engine"
+ 	compileOnly 'org.projectlombok:lombok:1.18.12'
+
+
+
+
+
+	implementation 'com.google.code.gson:gson:2.8.5'
+	compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+	compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.17'
+
+// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-templates
+	compile group: 'org.codehaus.groovy', name: 'groovy-templates', version: '3.0.0-beta-2'
+
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version:'2.3.0'
+// https://mvnrepository.com/artifact/commons-io/commons-io
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'eu.bitwalker', name: 'UserAgentUtils', version:'1.21'
+	// https://mvnrepository.com/artifact/org.atteo/xml-combiner
+	compile group: 'org.atteo', name: 'xml-combiner', version: '2.2'
+	compile 'com.google.googlejavaformat:google-java-format:1.7'
+// https://mvnrepository.com/artifact/org.eclipse.jdt/org.eclipse.jdt.core
+	compile group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.core', version: '3.10.0'
+	compile 'org.apache.commons:commons-lang3:3.9'
+
+// https://mvnrepository.com/artifact/org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j
+	compile group: 'org.apache.servicemix.bundles', name: 'org.apache.servicemix.bundles.dom4j', version: '2.1.1_1'
+
+	// https://mvnrepository.com/artifact/org.dom4j/dom4j
+	compile group: 'org.dom4j', name: 'dom4j', version: '2.1.1'
+}
+test.classpath += configurations.developmentOnly
+mainClassName = "io.hashimati.microstarter.Application"
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
+}
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    options.compilerArgs.add('-parameters')
+}
+shadowJar {
+    mergeServiceFiles()
+}
+tasks.withType(JavaExec) {
+    classpath += configurations.developmentOnly
+    jvmArgs('-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
+}

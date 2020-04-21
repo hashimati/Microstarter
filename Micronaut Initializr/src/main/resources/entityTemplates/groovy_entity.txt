@@ -1,0 +1,19 @@
+package ${entitypackage}
+
+${importedPackages};
+import javax.validation.constraints.*;
+import groovy.transform.Canonical;
+import groovy.transform.CompileStatic;
+${jdbc?'import javax.persistence.*':''};
+${containDate?'import java.util.Date':''}
+
+@CompileStatic
+@Canonical
+<% if(jdbc) out.print "@Entity(name=\"${collectionName}\")"%>
+class ${className}{
+
+    <% if(jdbc) out.println '@Id'%>
+    <% if(jdbc) out.println '@GeneratedValue(strategy = GenerationType.SEQUENCE)' %>
+    <% if(jdbc) out.println 'long id' else out.println 'private String id;'%>
+    ${instances};
+}

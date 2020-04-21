@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="description" content="Generate A Micronaut Applicaiton in Easy and Fast Steps">
+    <meta name="keywords" content="Micronaut,Microservice,Cloud Native,Serverless,Java,Kotlin,Groovy,quarkus">
+    <meta name="google-site-verification" content="z6eUiH2d1J7JPvIklVM_vAk8V-4WxAAlUcAanDqK64E" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="author" content="Ahmed Al Hashmi">
+    <link rel="stylesheet" href="/css/index3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141377320-1"></script>
+
+    <script src="https://use.fontawesome.com/ccc1a0eb62.js"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-141377320-1');
+    </script>
+    <style>
+        .fa {
+
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-github {
+            /*background: #000000;*/
+            color: white;
+            padding: 10px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<nav style="background: #0e90d2">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo" style="padding-left: 10px;">{MicroStarter}<small style="font-size: 60%;
+        color: #ffe8a1; padding-left: 3px;">beta</small></a>
+
+        <a href="#" data-target="framework-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://github.com/hashimati/microstarter" class="fa fa-github"></a></li>
+            <!--            <i class="material-icons whatshot"> hashimati</i>-->
+        </ul>
+
+    </div>
+</nav>
+<ul class="sidenav" id="framework-nav">
+    <li><a href="https://www.microstarter.io/m">Micronaut</a></li>
+    <li><a href="https://www.microstarter.io/q">Quarkus</a></li>
+</ul>
+
+
+
+<div class="" id="startapp" style="height: 100%;"  v-cloak>
+    <div class="row" style="height: 100%;">
+
+        <div class="sidebar col s12 m4 l3 hide-on-small-only" style="height: 100%"> <!-- Note that "m4 l3" was added -->
+            <!-- Grey navigation panel
+
+                  This content will be:
+              3-columns-wide on large screens,
+              4-columns-wide on medium screens,
+              12-columns-wide on small screens  -->
+            <div class="section" style="width: 100%;">
+                <p style="font-family: karla; font-size: 20px;">Project
+                    Information</p>
+
+                <div class="divider"></div>
+                <div class="collection" style="width: 100%;">
+                    <a class="collection-item active"
+                       id="projectMetadataLayoutTab1" href="#"
+                       v-on:click="elementFadeOut('projectMetadataLayout',$event)"
+                       style="width: 100%;">Project</a>
+                    <a class="collection-item" id="EntitiesLayoutTab1"
+                       v-on:click="elementFadeOut('EntitiesLayout',$event)"
+                       style="width: 100%;">Entities</a>
+                    <a class="collection-item" id="ClassLayoutTab1"
+                       v-on:click="elementFadeOut('ClassLayout',$event)"
+                       style="width: 100%;">Classes
+                    </a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div style="padding-bottom: 6px;">
+                <a class="waves-effect waves-light btn-large hoverable" data-position="bottom"
+                   data-tooltip="press Alt + Enter"
+                   v-on:click="sendGenerateRequest(); generateMnCommand();"
+                   style="width: 100%">
+                    Generate a Project <span>alt + ⏎</span></a>
+            </div>
+            <div style="padding-bottom: 6px;">
+                <a class="waves-effect waves-light btn-large hoverable" data-position="bottom"
+                   data-tooltip="press Alt + Enter"
+                   v-on:click="generateEntitiesRequest(); generateMnCommand();"
+                   style="width: 100%">
+                    Generate Entities Files</a>
+            </div>
+            <div style="padding-bottom: 6px;">
+                <a id ="shareLayoutTab1" class="waves-effect waves-light btn-large  modal-trigger"
+                   style="width:100%;" v-on:click="elementFadeOut('shareLayout',$event)"> Share Configurations <i
+                        class="material-icons right">share
+                </i></a>
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col s12 m8 l9 center-align show-on-small hide-on-med-and-up" style="padding-bottom: 20px;" >
+            <div class="collection row" >
+                <a class="col s3 collection-item active waves-effect waves-light"
+                   id="projectMetadataLayoutTab2" href="#!"
+                   v-on:click="elementFadeOut('projectMetadataLayout',$event)">Project</a>
+                <a class="col s3 collection-item waves-effect waves-light" id="EntitiesLayoutTab2" href="#!"   v-on:click="elementFadeOut('EntitiesLayout',$event)">
+                    Entities</a>
+                <a class="col s3 collection-item waves-effect waves-light" id="ClassLayoutTab2" href="#!"
+                   v-on:click="elementFadeOut('ClassLayout',$event)">Classes
+                </a>
+                <a class="col s3 collection-item waves-effect waves-light" id="shareLayoutTab2" href="#!"
+                   v-on:click="elementFadeOut('shareLayout',$event)">Share
+                </a>
+            </div>
+        </div>
+        <div class="col s12 m8 l9 contents scale-transition" id="projectMetadataLayout"> <!-- Note that "m8 l9" was added -->
+
+
+            <!-- Teal page content
+
+          This content will be:
+      9-columns-wide on large screens,
+      8-columns-wide on medium screens,
+      12-columns-wide on small screens  -->
+            <div class="row col-md col-sm" >
+                <div>
+
+                    <div class="col l12 m12 s12"
+                         style="padding-bottom: 20px;"><h5>Generate A Micronaut Application In Easy Steps</h5></div>
+                    <div class="col l10 m12 s12">
+                        <form class="col l12 m12 s12">
+                            <div class="row col-md col-sm l12 m12 s12">
+                                <div class="input-field col l3 m12 s12">
+                                    <select v-on:change="restAutoCompleteList" v-model="profile">
+                                        <option selected>service</option>
+                                        <option>function-aws</option>
+                                        <option>function-aws-alexa</option>
+                                        <option>grpc</option>
+                                        <option>cli</option>
+                                    </select>
+                                    <label>Profile</label>
+                                </div>
+                                <div class="input-field col l3 m12 s12">
+                                    <select v-on:change="restAutoCompleteList" v-model="build">
+                                        <option selected>Gradle</option>
+                                        <option>Maven</option>
+                                    </select>
+                                    <label>Build</label>
+                                </div>
+                                <div class="input-field col l3 m12 s12">
+                                    <select v-on:change="restAutoCompleteList" v-model="language">
+                                        <option selected>Java</option>
+                                        <option>Groovy</option>
+                                        <option>Kotlin</option>
+                                    </select>
+                                    <label>language</label>
+                                </div>
+
+                                <div class="input-field col l3 m12 s12">
+                                    <select v-on:change="restAutoCompleteList" v-model="javaVersion">
+                                        <option>8</option>
+                                        <option selected>11</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                    </select>
+                                    <label>Java Version</label>
+                                </div>
+                            </div>
+
+                            <div class="row col-md col-sm l12 m12 s12">
+                                <div class="input-field col l3 m12 s12">
+                                    <input id="group" type="text" v-on:keydown="restAutoCompleteList" class="validate"
+                                           v-model="group">
+                                    <label for="group">group</label>
+                                </div>
+                                <div class="input-field col l3 m12 s12">
+                                    <input id="artifact" type="text" v-on:keydown="restAutoCompleteList" class="validate"
+                                           v-model="artifact">
+                                    <label for="artifact">Artifact</label>
+                                </div>
+
+                                <div class="input-field col l3 m12 s12">
+                                    <input id="port" type="text" v-on:keydown="restAutoCompleteList" class="validate"
+                                           v-model="port">
+                                    <label for="artifact">Port</label>
+                                </div>
+                                <div class="input-field col l3 m12 s12">
+                                    <select id="viewframework" v-model="viewFramework" >
+                                        <option selected>None</option>
+                                        <option>Thymeleaf</option>
+                                        <option>Handlebars</option>
+                                        <option>Velocity</option>
+                                        <option>Freemarker</option>
+                                    </select>
+                                    <label>View Framework</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="color-input-field col l12 m12 s12">
+                                    <input type="text" id="dependencies" class="featuresSearchField"
+                                           v-model="dependencySearchQuery"
+                                           v-on:keyup="searchEvent" >
+                                    <label for="dependencies">Search for features
+                                        <a class="modal-trigger" v-on:click="constructFullDependenciesList" href="#modal1">show full list</a></label>
+                                </div>
+                                <div class="col l12 m12 s12">
+                                    <auto2 v-if="viewAutoComplete"
+                                           v-bind:items="listItems"></auto2>
+                                </div>
+
+                                <div class="col l12 m12 s12">
+                                    Report an issue or tell us what you want to see <a
+                                        href="https://github.com/hashimati/microstarter/issues">here
+                                </a>, Share on <a class="waves-effect waves-light btn-floating btn-larg social twitter" href="https://twitter.com/intent/tweet?text=Generate%20Micronaut%20Applications%20in%20Easy%20Steps%20visit%20https://www.microstarter.io" target="_blank">
+                                    <i class="fa fa-twitter"></i></a>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                    <div v-if="names.length > 0" class="col l12 m12 s12 featuresClassContainer">
+                        <div class="col l12 m12 s12 featuresContainer">
+                            <div class="featuresContainerHeader col l12 m12 s12">
+                                <div class="col l3 m11 s11"><h6><b>Selected Features ({{names.length}})</b></h6> </div>
+                                <a class="btn-floating waves-effect modal-trigger waves-light red"
+                                   v-on:click="names.splice(0,names.length)"><i
+                                        class="material-icons">delete
+                                </i></a>
+                            </div>
+
+                            <div class="col l4 s12 m12" v-for="item in names">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <p>{{item}}</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a class="waves-effect waves-light btn red"
+                                           v-on:click="removeDependency(item)">Delete <i
+                                                class="material-icons left">delete</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                <div class="col l6 m12 s12 classesContainer">-->
+                        <!--                    <p>classes</p>-->
+                        <!--                </div>-->
+                    </div>
+                </div>
+
+            </div>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Features List</h4>
+                    <div v-for ="i in fullDependciesList">
+                        <p>
+                            <label>
+                                <input type="checkbox" v-bind:id="i.name" v-bind:value="i.name" v-model="names"
+                                       v-on:change="generateMnCommandLocal"/>
+                                <span>{{i.name}}</span>
+                            </label>
+                            <span>{{i.description}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="errorMessageModal2" class="modal">
+                <div class="modal-content">
+                    <h4>Error Message</h4>
+                    <div>
+                        <p>
+                            {{errorMessage}}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--                <div id="componantModal" class="modal bottom-sheet" style="height: 100%">-->
+            <!--                    <div class="modal-content">-->
+            <!--                        <h6><b>Classes List({{classesList.length}})</b></h6>-->
+            <!--                        <div class="col l12 m12 s12">-->
+            <!--                            <form class="col l12 m12 s12">-->
+            <!--                                <div class="row col-md col-sm l12 m12 s12">-->
+            <!--                                    <div class="input-field col l2 m12 s12">-->
+            <!--                                        <select v-once v-model="selectedTemplateCatgory" class="browser-default"-->
+            <!--                                                data-position="bottom" data-tooltip="category"-->
+            <!--                                                v-on:change="changeTemplateList">-->
+            <!--                                            <option selected>Base</option>-->
+            <!--                                            <option>Service</option>-->
+            <!--                                            <option>Kafka</option>-->
+            <!--                                            <option>RabbitMQ</option>-->
+            <!--                                            <option>GRPC</option>-->
+            <!--                                            <option>CLI</option>-->
+            <!--                                        </select>-->
+
+            <!--                                    </div>-->
+            <!--                                    <div class="input-field col l2 m12 s12">-->
+            <!--                                        <select id="selectedTemplate" class="browser-default" v-model="selectedTemplate"-->
+            <!--                                                v-on:change="resetTemplateParms()" data-position="bottom" data-tooltip="type">-->
+            <!--                                            <option v-for="item in selectedTemplatesList" >{{item}}</option>-->
+
+            <!--                                        </select>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="input-field col l3 m12 s12">-->
+            <!--                                        <input id="grfsdoup" type="text" class="validate"-->
+            <!--                                               v-model="templateName" data-position="bottom" data-tooltip="Avoid to use keywords">-->
+            <!--                                        <label for="group">Name</label>-->
+            <!--                                    </div>-->
+
+            <!--                                    <div class="input-field col l3 m12 s12">-->
+            <!--                                        <input id="growrewrwrup" type="text"  class="validate" v-model="templatePackage"-->
+            <!--                                               data-position="bottom" data-tooltip="Avoid to use keywords">-->
+            <!--                                        <label for="group">package</label>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="input-field col l5 m12 s12" v-if="showTemplatePath()">-->
+            <!--                                        <input id="templatePath" type="text"  class="validate" v-model="templateMapPath">-->
+            <!--                                        <label for="group">Mapping Path</label>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="input-field col l5 m12 s12" v-if="showTemplateTopic()">-->
+            <!--                                        <input id="templateSocketTopic" type="text"  class="validate"-->
+            <!--                                               v-model="templateSocketTopic">-->
+            <!--                                        <label for="group">Topic</label>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="input-field col l5 m12 s12" v-if="showTemplateProperty()">-->
+            <!--                                        <input id="templateProperty" type="text"  class="validate"-->
+            <!--                                               v-model="templateMapPath">-->
+            <!--                                        <label for="group">Command Property</label>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="col l2 m12 s12">-->
+            <!--                                        <a class="btn-floating btn-large waves-effect waves-light"-->
+            <!--                                           v-on:click="addComponent()"><i-->
+            <!--                                                class="material-icons">add</i></a>-->
+
+            <!--                                    </div>-->
+            <!--                                </div>-->
+
+
+            <!--                            </form>-->
+            <!--                            <div>-->
+            <!--                                <div class="row">-->
+            <!--                                    <div class="col l3 s12 m12" v-for="item in classesList">-->
+            <!--                                        <div class="card">-->
+            <!--                                            <div class="card-content">-->
+            <!--                                                <span class="card-title"><b>{{item.name}}</b></span>-->
+
+            <!--                                                <div><p> <b>Type</b>: {{item.type}}</p></div>-->
+            <!--                                                <div> <p><b>Package</b>: {{item.packagePath}}</p></div>-->
+            <!--                                                <div v-if="item.propertyPath != ''">-->
+            <!--                                                    <p><b>Path</b> : {{item.propertyPath}}</p></div>-->
+            <!--                                                <div v-if="item.topic != ''"> <p><b>Topic</b> : {{item.topic}}</p></div>-->
+
+            <!--                                            </div>-->
+            <!--                                            <div class="card-action">-->
+            <!--                                                <a class="waves-effect waves-light btn red"-->
+            <!--                                                   v-on:click="deleteComponent(item.name, item.packagePath)">Delete <i-->
+            <!--                                                        class="material-icons left">delete</i></a>-->
+            <!--                                            </div>-->
+            <!--                                        </div>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                                &lt;!&ndash;                        <ul class="collection" v-for="item in classesList">&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                            <li>&ndash;&gt;-->
+
+            <!--                                &lt;!&ndash;                                <h5 class="title">{{item.name}}</h5>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <div><p> type:{{item.type}}</p></div>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <div> <p>package: {{item.packagePath}}</p></div>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <div v-if="item.propertyPath != ''"> <p>path : {{item.propertyPath}}</p></div>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                            <a href="#!" class="secondary-content">&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <i class="material-icons">add</i>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                            </a>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                            </li>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                        </ul>&ndash;&gt;-->
+
+            <!--                            </div>-->
+
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="modal-footer">-->
+            <!--                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <footer class="page-footer" style="background: white;">
+                <div class="container" style="background: white; color:black;">
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="footer-copyright" style="background: white;">
+                    <div class="container" style="background: white; color: black;">
+                        <p> Founded by:  <a href="https://www.twitter.com/hashimati" target="_blank">@hashimati</a>, All rights
+                            are reserved. All
+                            names may be trademarks for their respective owners.</p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <div id="ClassLayout" class="col s12 m8 l9 scale-transition hide scale-out">
+            <div class="col l12 m12 s12"
+                 style="padding-bottom: 20px;"><h5>Add Classes To The Project</h5></div>
+            <div>
+                <h6><b>Classes List({{classesList.length}})</b></h6>
+                <div class="col l12 m12 s12">
+                    <form class="col l12 m12 s12">
+                        <div class="row col-md col-sm l12 m12 s12">
+                            <div class="input-field col l2 m12 s12">
+                                <select v-once v-model="selectedTemplateCatgory" class="browser-default"
+                                        data-position="bottom" data-tooltip="category"
+                                        v-on:change="changeTemplateList">
+                                    <option selected>Base</option>
+                                    <option>Service</option>
+                                    <option>Kafka</option>
+                                    <option>RabbitMQ</option>
+                                    <option>GRPC</option>
+                                    <option>CLI</option>
+                                </select>
+
+                            </div>
+                            <div class="input-field col l2 m12 s12">
+                                <select id="selectedTemplate" class="browser-default" v-model="selectedTemplate"
+                                        v-on:change="resetTemplateParms()" data-position="bottom" data-tooltip="type">
+                                    <option v-for="item in selectedTemplatesList" >{{item}}</option>
+
+                                </select>
+                            </div>
+                            <div class="input-field col l3 m12 s12">
+                                <input id="grfsdoup" type="text" class="validate"
+                                       v-model="templateName" data-position="bottom" data-tooltip="Avoid to use keywords">
+                                <label for="group">Name</label>
+                            </div>
+
+                            <div class="input-field col l3 m12 s12">
+                                <input id="growrewrwrup" type="text"  class="validate" v-model="templatePackage"
+                                       data-position="bottom" data-tooltip="Avoid to use keywords">
+                                <label for="group">package</label>
+                            </div>
+                            <div class="input-field col l5 m12 s12" v-if="showTemplatePath()">
+                                <input id="templatePath" type="text"  class="validate" v-model="templateMapPath">
+                                <label for="group">Mapping Path</label>
+                            </div>
+                            <div class="input-field col l5 m12 s12" v-if="showTemplateTopic()">
+                                <input id="templateSocketTopic" type="text"  class="validate"
+                                       v-model="templateSocketTopic">
+                                <label for="group">Topic</label>
+                            </div>
+                            <div class="input-field col l5 m12 s12" v-if="showTemplateProperty()">
+                                <input id="templateProperty" type="text"  class="validate"
+                                       v-model="templateMapPath">
+                                <label for="group">Command Property</label>
+                            </div>
+                            <div class="col l2 m12 s12">
+                                <a class="btn waves-effect waves-light"
+                                   v-on:click="addComponent()">Add<i
+                                        class="material-icons right">add</i></a>
+
+                            </div>
+                        </div>
+
+
+                    </form>
+                    <div>
+                        <div class="row">
+                            <div class="col l3 s12 m12" v-for="item in classesList">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <span class="card-title"><b>{{item.name}}</b></span>
+
+                                        <div><p> <b>Type</b>: {{item.type}}</p></div>
+                                        <div> <p><b>Package</b>: {{item.packagePath}}</p></div>
+                                        <div v-if="item.propertyPath != ''">
+                                            <p><b>Path</b> : {{item.propertyPath}}</p></div>
+                                        <div v-if="item.topic != ''"> <p><b>Topic</b> : {{item.topic}}</p></div>
+
+                                    </div>
+                                    <div class="card-action">
+                                        <a class="waves-effect waves-light btn red"
+                                           v-on:click="deleteComponent(item.name, item.packagePath)">Delete <i
+                                                class="material-icons left">delete</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                        <ul class="collection" v-for="item in classesList">-->
+                        <!--                            <li>-->
+
+                        <!--                                <h5 class="title">{{item.name}}</h5>-->
+                        <!--                                <div><p> type:{{item.type}}</p></div>-->
+                        <!--                                <div> <p>package: {{item.packagePath}}</p></div>-->
+                        <!--                                <div v-if="item.propertyPath != ''"> <p>path : {{item.propertyPath}}</p></div>-->
+                        <!--                            <a href="#!" class="secondary-content">-->
+                        <!--                                <i class="material-icons">add</i>-->
+                        <!--                            </a>-->
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="EntitiesLayout" class="col s12 m8 l9 scale-transition hide scale-out">
+
+            <div class="row col-md col-sm l12 m12 s12">
+                <div class="col l12 m12 s12"
+                     style="padding-bottom: 20px;"><h5>Generate Entities, Repositories, Services,
+                    Controllers, and Clients</h5></div>
+                <div class="input-field col l3 m12 s12">
+                    <select v-once v-model="databaseTypeForm"
+                            v-on:change="">
+                        <option selected>H2</option>
+                        <option>Postgres</option>
+                        <option>MySQL</option>
+                        <option>MariaDB</option>
+                        <option>Oracle</option>
+                        <option>SQL Server</option>
+                        <option>MongoDB</option>
+                    </select>
+                    <label for="group">Database</label>
+                </div>
+                <div class="input-field col l3 m12 s12">
+                    <input id="database_name" type="text" v-model="databaseNameForm" class="validate">
+                    <label>Database Name</label>
+                </div>
+                <div class="input-field col l3 m12 s12">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#EntityModal"
+                       style="width: 100%;">Add
+                        Entity</a>
+                </div>
+                <div class="input-field col l3 m12 s12">
+                    <a class="waves-effect waves-light btn modal-trigger"
+                       v-bind:disabled="databaseTypeForm ==='MongoDB' || databaseTypeForm==='Neo4j'"
+                       href="#RelationModal"
+                       style="width: 100%;">Add Relationship</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <h6><b>Entities</b></h6>
+                    <div class="col l4 s12 m12" v-for="item in entities">
+                        <div class="card">
+                            <div class="card-content">
+                                <p><b>Entity: </b>{{item.name}}</p>
+                                <p><b>Collection: </b>{{item.collectionName}}</p>
+                                <table class="striped centered highlight responsive-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Attribute Name</th>
+                                        <th>Data Type</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr v-for="a in item.attributes">
+                                        <td>{{a.name}}</td>
+                                        <td>{{a.type}}</td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn red"
+                                   v-on:click="deleteEntity(item.name)">Delete <i
+                                        class="material-icons left">delete</i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="divider"></div>
+                <div class="section" v-bind:hidden="databaseTypeForm ==='MongoDB'">
+                    <h6><b>Relationships</b></h6>
+                    <div class="col l4 s12 m12" v-for="item in entityRelationShips">
+                        <div class="card">
+                            <div class="card-content">
+                                <p><b>E1: </b>{{item.e1}}</p>
+                                <p><b>E2: </b>{{item.e2}}</p>
+                                <p><b>Relation Type: </b>{{item.relationType}}</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn red"
+                                   v-on:click="deleteRelation(item.e1, item.e2)">Delete <i
+                                        class="material-icons left">delete</i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="generateEntitiesButton" class="col s12 m8 l9 center-align show-on-small hide-on-med-and-up">
+                <div style="padding-bottom: 6px;">
+                    <a class="waves-effect waves-light btn-large hoverable" data-position="bottom"
+                       data-tooltip="press Alt + Enter"
+                       v-on:click="generateEntitiesRequest(); generateMnCommand();"
+                       style="width: 100%">
+                        Generate Entities Files</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Entity Modal  -->
+        <div id="EntityModal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h5>Entity</h5>
+                <div>
+                    <form class="col l12 m12 s12">
+                        <div class="row col-md col-sm l12 m12 s12">
+                            <div class="input-field col l6 m12 s12">
+                                <input id="entity_name" type="text" v-model="entityNameForm" class="validate">
+                                <label>Name</label>
+                            </div>
+                            <div class="input-field col l6 m12 s12">
+                                <input id="entity_collection" type="text" v-model="collectionNameForm" class="validate">
+                                <label>Collection/Table Name</label>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="col l12 m12 s12">
+                        <div class="row col-md col-sm l12 m12 s12">
+                            <div class="input-field col l4 m12 s12">
+                                <input id="attribute_name" type="text" v-model="attributeNameForm" class="validate">
+                                <label>Attribute Name</label>
+                            </div>
+
+                            <div class="input-field col l4 m12 s12">
+                                <select id="variable_datatype" v-model="attributeTypeForm" v-on:change="">
+                                    <option selected>String</option>
+                                    <option>boolean</option>
+                                    <option>byte</option>
+                                    <option>short</option>
+                                    <option>int</option>
+                                    <option>long</option>
+                                    <option>float</option>
+                                    <option>double</option>
+                                    <option>Date</option>
+                                </select>
+                                <label>Type</label>
+                            </div>
+
+                            <div class="input-field col l4 m12 s12">
+                                <a class="waves-effect waves-light btn modal-trigger" href="#EntityModal"
+                                   style="width: 100%;" v-on:click="addAttribute()">Add
+                                    attribute</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col l12 m12 s12">
+                        <table class="striped centered highlight responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Attribute Name</th>
+                                <th>Data Type</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr v-for="a in entityAttributes">
+                                <td>{{a.name}}</td>
+                                <td>{{a.type}}</td>
+                                <td>  <a class="btn-floating btn waves-effect waves-light red"
+                                         v-on:click="deleteAttribute(a.name)"><i
+                                        class="material-icons">remove</i></a></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" >
+                    Discard</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" v-on:click="addEntity()">Done</a>
+            </div>
+        </div>
+
+
+        <!-- Relationship Modal  -->
+        <div id="RelationModal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h5>Relationship</h5>
+                <row>
+                    <div class="input-field col l4 m12 s12">
+                        <a class='dropdown-trigger btn' data-target='dropdown1'>{{entityOneSelectLabel}}</a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li v-for="i in entities"><a
+                                    v-on:click="selectEntityInRelationship('1', i.name)">{{i.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="input-field col l4 m12 s12">
+                        <select id="relations_type" v-model="relationshipForm">
+                            <option selected>One-To-One</option>
+                            <option>One-To-Many</option>
+                        </select>
+                        <label>Type</label>
+                    </div>
+                    <div class="input-field col l4 m12 s12">
+                        <a class='dropdown-trigger btn' data-target='entity2DropDown'>{{entityTwoSelectLabel}}</a>
+                        <!-- Dropdown Structure -->
+                        <ul id='entity2DropDown' class='dropdown-content'>
+                            <li v-for="i in entities"><a  v-on:click="selectEntityInRelationship('2', i.name)">{{i.name }}</a></li>
+                        </ul>
+                    </div>
+                </row>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" v-on:click="addRelations()">
+                    Agree</a>
+            </div>
+        </div>
+        <div id="shareLayout" class="col s12 m8 l9 scale-transition hide scale-out">
+            <div>
+                <h5>Share Configurations</h5>
+                <div class="row">
+                    <div class="input-field col l12 m12 s12">
+                        <div class="input-field col l10 m12 s12">
+
+                            <input id="mncommand" type="text"  class="validate"
+                                   v-model="mnCommand">
+                            <label for="mncommand">Cli Command</label>
+
+                        </div>
+                        <div class="col l2 m12 s12">
+                            <a class="btn waves-effect modal-trigger waves-light"
+                               v-on:click="copynNcommand">copy<i
+                                    class="material-icons right">file_copy
+                            </i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col l12 m12 s12">
+                        <div class="input-field col l10 m12 s12">
+
+                            <input id="mnurl" type="text"  class="validate"
+                                   v-model="mnUrl">
+                            <label for="mnurl">Share Url</label>
+                        </div>
+                        <div class="col l2 m12 s12">
+                            <a class="btn waves-effect modal-trigger waves-light"
+                               v-on:click="copyMnUrl">Copy<i
+                                    class="material-icons right">file_copy
+                            </i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="button" class="col s12 m8 l9 center-align show-on-small hide-on-med-and-up">
+        <div style="padding-bottom: 6px;">
+            <a class="waves-effect waves-light btn-large hoverable" data-position="bottom"
+               data-tooltip="press Alt + Enter"
+               v-on:click="sendGenerateRequest(); generateMnCommand();"
+               style="width: 100%">
+                Generate a Project <span>alt + ⏎</span></a>
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+<!--JavaScript at end of body for optimized loading-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router"></script>
+<script src="/js/jquery-3.1.1.min.js"></script>
+<!--<script src="/js/axios/axios.min.js"></script>-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="/js/MainApp.js"></script>
+<script>
+
+    M.AutoInit();
+
+
+</script>
+</body>
+
+</html>

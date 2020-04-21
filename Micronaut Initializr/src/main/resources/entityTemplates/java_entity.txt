@@ -1,0 +1,26 @@
+package ${entitypackage};
+
+${importedPackages}
+${jdbc?'import javax.persistence.*;' :''}
+${jdbc?'import javax.persistence.*;' :''}
+import lombok.*;
+import javax.validation.constraints.*;
+${containDate?'import java.util.Date;':''}
+
+
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@Builder
+<% if(jdbc) out.print "@Entity(name =\"${collectionName}\")"%>
+public class ${className}{
+
+
+    <% if(jdbc) out.println '@Id'%>
+    <% if(jdbc) out.println '@GeneratedValue(strategy = GenerationType.SEQUENCE)' %>
+    <% if(jdbc) out.println '@EqualsAndHashCode.Exclude' %>
+    <% if(jdbc) out.println 'private long id;' else out.println 'private String id;'%>
+${instances}
+}

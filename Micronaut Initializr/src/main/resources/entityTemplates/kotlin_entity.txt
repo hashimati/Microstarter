@@ -1,0 +1,12 @@
+package ${entitypackage}
+${importedPackages}
+${jdbc?'import javax.persistence.Entity':''}
+${jdbc?'import javax.persistence.GeneratedValue':''}
+${jdbc?'import javax.persistence.Id':''}
+import javax.validation.constraints.*
+${containDate?'import java.util.Date':''}
+
+
+<% if(jdbc) out.print "@Entity(name=\"${collectionName}\")"%>
+data class ${className}(${jdbc? '@Id @GeneratedValue(strategy = GenerationType.SEQUENCE) var id: Long':'var id:String'}
+${instances})

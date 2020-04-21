@@ -1,0 +1,7 @@
+datasources:
+  default:
+    url: jdbc:sqlserver://localhost;instance=SQLEXPRESS;databaseName=${databaseName}
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: Enter database username
+    password: 'Enter the password'
+    dialect: SQL_SERVER

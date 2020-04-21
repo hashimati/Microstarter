@@ -1,0 +1,40 @@
+package ${servicePackage}
+
+import javax.inject.Inject
+import javax.inject.Singleton
+import javax.transaction.Transactional
+import ${entityPackage}
+import ${repoPackage}
+
+@Singleton
+@Transactional
+class ${className}Service {
+    @Inject ${className}Repository ${entityName}Repository
+
+    ${className} save(${className} ${entityName}){
+
+         //TODO insert your logic here!
+
+
+         //saving Object
+
+         return ${entityName}Repository.save(${entityName})
+     }
+
+    ${className} findById(long id){
+        return ${entityName}Repository.findById(id).orElse(null)
+    }
+
+    boolean deleteById(long id){
+        try
+        {
+            ${entityName}Repository.deleteById(id);
+            return true;
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+}

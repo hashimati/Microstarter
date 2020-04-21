@@ -1,0 +1,36 @@
+package ${controllerPackage};
+
+
+import io.micronaut.context.annotation.Parameter;
+import io.micronaut.http.annotation.*;
+
+import javax.inject.Inject;
+
+import ${entityPackage};
+import ${servicePackage};
+
+
+@Controller("/api/${entities}")
+public class ${className}Controller {
+
+    @Inject ${className}Service ${entityName}Service;
+
+    @Post("/save")
+    public ${className} save(${className} ${entityName}){
+
+        //TODO insert your logic here!
+
+        //saving Object
+        return ${entityName}Service.save(${entityName});
+    }
+    @Get("/get")
+    public ${className} findById(@Parameter("id") long id){
+        return ${entityName}Service.findById(id);
+    }
+
+    @Delete("/delete/{id}")
+    public boolean deleteById(@PathVariable("id") long id){
+        return  ${entityName}Service.deleteById(id);
+    }
+}
+

@@ -1,0 +1,27 @@
+package ${controllerPackage}
+
+import io.micronaut.http.annotation.*
+import ${entityPackage}
+import ${servicePackage}
+import javax.inject.Inject;
+
+@Controller
+class ${className}Controller {
+
+    @Inject
+    lateinit var ${entityName}Service: ${className}Service
+    @Post("/save")
+    fun save( ${entityName}: ${className}):  ${className} {
+
+        return ${entityName}Service.save(${entityName})
+    }
+    @Get("/get")
+    fun findById(id:Long): ${className} {
+        return ${entityName}Service.findById(id)
+    }
+
+    @Delete("/delete/{id}")
+    fun deleteById(id:Long): Boolean {
+        return  ${entityName}Service.deleteById(id)
+    }
+ }
