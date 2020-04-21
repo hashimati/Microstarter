@@ -1,1 +1,1 @@
-mn create-app io-hashimati-microstarter --profile service --lang java --build gradle--features mongo-reactive
+mn create-app io-hashimati-microstarter --profile service --lang java --build gradle --features mongo-reactive
