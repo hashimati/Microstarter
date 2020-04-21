@@ -52,7 +52,7 @@ public class GeneratorUtils
 
 
 
-        String features = allDependencies.stream().map(x-> "--features " + x)
+        String features = allDependencies.stream().map(x-> " --features " + x)
                 .collect(Collectors.joining(" "));
 
         String appOrFunction =!projectRequest.getProfile().toLowerCase().contains("function")? "create-app": "create-function";
