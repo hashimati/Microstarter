@@ -3,7 +3,7 @@ A simple Initialzr that enables developers to generate the starter code of the M
 The tool is generating application based on Micronaut Profile project : 
 https://github.com/micronaut-projects/micronaut-profiles
 
-##Features:##
+## Features: ##
 1. Bootstrapping Micronaut applications. 
 2. Adding Classes to Micronaut applications. 
 3. Entities (Domains): To enable the developers to generate the basic code of the project domains. This feature is generating : 
